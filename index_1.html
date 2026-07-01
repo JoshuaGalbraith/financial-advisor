@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Galbraith — Financial Advisor, Johannesburg</title>
+<meta name="description" content="Joshua Galbraith, broker at Hereford, specialising in risk cover and investment management in Johannesburg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10233F;
+    --ink-2:#16304F;
+    --paper:#F7F4EC;
+    --paper-2:#EFEADC;
+    --brass:#B8863B;
+    --brass-light:#D9AE68;
+    --sage:#3E5643;
+    --charcoal:#23262B;
+    --line:#D7D2C4;
+    --line-dark:#2A4266;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--paper);
+    color:var(--charcoal);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(16,35,63,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .nav-name{font-family:'Fraunces', serif; color:var(--paper); font-size:1.05rem; font-weight:600;}
+  .nav-name span{color:var(--brass-light);}
+  .nav-links{display:flex; gap:28px; align-items:center;}
+  .nav-links a{color:var(--paper); font-size:0.86rem; opacity:0.82; transition:opacity 0.2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--brass); color:var(--ink)!important; padding:9px 18px;
+    border-radius:2px; font-weight:600; font-size:0.82rem!important; opacity:1!important;
+  }
+  .nav-cta:hover{background:var(--brass-light);}
+  @media (max-width:720px){ .nav-links a:not(.nav-cta){display:none;} }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    padding:150px 0 90px;
+    overflow:hidden;
+  }
+  .net-pattern{
+    position:absolute; inset:0; opacity:0.07; pointer-events:none;
+    background-image:
+      repeating-linear-gradient(45deg, var(--brass-light) 0, var(--brass-light) 1px, transparent 1px, transparent 46px),
+      repeating-linear-gradient(-45deg, var(--brass-light) 0, var(--brass-light) 1px, transparent 1px, transparent 46px);
+  }
+  .hero-grid{
+    position:relative; display:grid; grid-template-columns:1fr; gap:56px; align-items:center; max-width:720px;
+  }
+  .hero-eyebrow{color:var(--brass-light); margin-bottom:22px; opacity:0; animation:riseIn 0.7s ease forwards 0.1s;}
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.6rem);
+    color:var(--paper);
+    margin-bottom:24px;
+    opacity:0; animation:riseIn 0.7s ease forwards 0.25s;
+  }
+  .hero h1 em{font-style:normal; color:var(--brass-light);}
+  .hero p.lede{
+    font-size:1.08rem; color:#C9D2E0; max-width:520px; margin-bottom:36px;
+    opacity:0; animation:riseIn 0.7s ease forwards 0.4s;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; opacity:0; animation:riseIn 0.7s ease forwards 0.55s;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px; border-radius:2px; font-weight:600; font-size:0.92rem;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--brass); color:var(--ink);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(184,134,59,0.35);}
+  .btn-ghost{border-color:rgba(247,244,236,0.35); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--paper); transform:translateY(-2px);}
+
+  @keyframes riseIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  @media (max-width:840px){
+    header.hero{padding:120px 0 70px;}
+  }
+
+  /* ---------- STITCH DIVIDER (signature element) ---------- */
+  .stitch{
+    height:34px; background:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .stitch svg{width:100%; max-width:1140px; height:16px;}
+  .stitch.on-ink{background:var(--ink);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head .eyebrow{color:var(--brass); margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem);}
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start;}
+  .about-grid p{color:#464b52; font-size:1.02rem; margin-bottom:18px;}
+  .about-grid p:last-child{margin-bottom:0;}
+  .pillars{display:flex; flex-direction:column; gap:0;}
+  .pillar{
+    display:flex; gap:18px; padding:20px 0; border-top:1px solid var(--line);
+  }
+  .pillar:last-child{border-bottom:1px solid var(--line);}
+  .pillar .mark{font-family:'IBM Plex Mono', monospace; color:var(--brass); font-size:0.85rem; padding-top:2px;}
+  .pillar h3{font-size:1.02rem; font-weight:600; margin-bottom:4px; font-family:'Inter',sans-serif;}
+  .pillar p{font-size:0.92rem; color:#5B6068; margin:0;}
+
+  @media (max-width:840px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* SERVICES */
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .service-card{
+    background:var(--white); border:1px solid var(--line); border-radius:3px;
+    padding:38px 34px; transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .service-card:hover{transform:translateY(-4px); box-shadow:0 16px 34px rgba(16,35,63,0.09); border-color:var(--brass-light);}
+  .service-icon{width:42px; height:42px; margin-bottom:20px;}
+  .service-card h3{font-size:1.28rem; margin-bottom:12px;}
+  .service-card p{color:#4E535A; font-size:0.96rem;}
+  @media (max-width:720px){ .services-grid{grid-template-columns:1fr;} }
+
+  /* APPROACH (dark) */
+  .approach{background:var(--ink); color:var(--paper);}
+  .approach .section-head h2{color:var(--paper);}
+  .approach .section-head .eyebrow{color:var(--brass-light);}
+  .approach-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:36px;}
+  .approach-item .num{
+    font-family:'Fraunces', serif; font-size:2.6rem; color:var(--brass-light); margin-bottom:14px; font-weight:500;
+  }
+  .approach-item h3{color:var(--paper); font-size:1.12rem; margin-bottom:10px;}
+  .approach-item p{color:#B9C3D4; font-size:0.94rem;}
+  @media (max-width:840px){ .approach-grid{grid-template-columns:1fr; gap:30px;} }
+
+  /* TRUST STRIP */
+  .trust{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .trust .wrap{padding:26px 32px; display:flex; flex-wrap:wrap; gap:12px 36px; align-items:center; justify-content:center;}
+  .trust-item{
+    display:flex; align-items:center; gap:9px; font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem; letter-spacing:0.03em; color:var(--ink-2);
+  }
+  .trust-item .dot{width:6px; height:6px; border-radius:50%; background:var(--sage);}
+
+  /* CONTACT */
+  .contact{background:var(--ink); color:var(--paper); position:relative; overflow:hidden;}
+  .contact-card{
+    position:relative;
+    background:var(--ink-2); border:1px solid var(--line-dark); border-radius:4px;
+    padding:48px; max-width:760px; margin:0 auto;
+  }
+  .contact-card .eyebrow{color:var(--brass-light); margin-bottom:16px;}
+  .contact-card h2{color:var(--paper); font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:14px;}
+  .contact-card > p{color:#C9D2E0; max-width:480px; margin-bottom:34px;}
+  .contact-methods{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:8px;}
+  .contact-method{
+    border:1px solid var(--line-dark); border-radius:3px; padding:20px;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .contact-method:hover{border-color:var(--brass-light); background:rgba(184,134,59,0.06);}
+  .contact-method .m-label{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--brass-light); margin-bottom:8px; display:block;}
+  .contact-method .m-value{font-size:0.98rem; color:var(--paper); font-weight:500; word-break:break-word;}
+  @media (max-width:720px){ .contact-methods{grid-template-columns:1fr;} .contact-card{padding:34px 26px;} }
+
+  /* FOOTER */
+  footer{background:var(--ink); border-top:1px solid var(--line-dark); padding:30px 0 40px;}
+  footer .wrap{display:flex; flex-direction:column; gap:6px;}
+  footer p{font-size:0.76rem; color:#8393AC; line-height:1.6;}
+  footer .fname{color:#B9C3D4; font-family:'IBM Plex Mono', monospace; letter-spacing:0.03em;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-name">Joshua Galbraith <span>·</span> Hereford</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="net-pattern"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow hero-eyebrow">Financial Advisor · Johannesburg</div>
+      <h1>Protecting what you've built.<br><em>Growing</em> what's next.</h1>
+      <p class="lede">I'm Joshua Galbraith, a broker at Hereford. I help people put the right risk cover in place and build investment plans that actually fit their life — with the attention you'd want from someone looking after your future.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/27622091010" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+27622091010">Call +27 62 209 1010</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stitch">
+  <svg viewBox="0 0 1140 16" preserveAspectRatio="none"><line x1="0" y1="8" x2="1140" y2="8" stroke="#C9BA92" stroke-width="1.5" stroke-dasharray="6 8"/></svg>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">About</div>
+      <h2>A fresh perspective, backed by an established team</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I work with individuals and families across Johannesburg on two things that matter most: making sure they're covered if life goes wrong, and making sure their money is working properly if it goes right.</p>
+        <p>I bring energy and genuine care to every conversation, while keeping things professional and straightforward — because behind every policy or portfolio is a person, and a plan for their life. As a broker at Hereford, distributing Liberty Group's range of risk and investment products, I combine a hands-on, personal approach with the backing of an established provider.</p>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="mark">01</div>
+          <div><h3>Personal, not procedural</h3><p>You get a real conversation, not a form to fill in — every recommendation is built around your actual circumstances.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="mark">02</div>
+          <div><h3>Responsive, always</h3><p>Questions get answered quickly. If there's ever an emergency, you'll know exactly who to call.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="mark">03</div>
+          <div><h3>Backed by Hereford & Liberty</h3><p>Personal service on the front end, an established provider and product range behind it.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch">
+  <svg viewBox="0 0 1140 16" preserveAspectRatio="none"><line x1="0" y1="8" x2="1140" y2="8" stroke="#D7D2C4" stroke-width="1.5" stroke-dasharray="6 8"/></svg>
+</div>
+
+<section id="services" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Services</div>
+      <h2>Where I focus</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+          <path d="M21 4L36 10V19C36 28 30 34.5 21 38C12 34.5 6 28 6 19V10L21 4Z" stroke="#B8863B" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M14 20.5L19 25.5L28.5 15.5" stroke="#3E5643" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Risk Cover</h3>
+        <p>Life, disability, and income protection cover structured around your real risks, not a generic checklist. If something goes wrong, you and the people who depend on you are looked after.</p>
+      </div>
+      <div class="service-card reveal">
+        <svg class="service-icon" viewBox="0 0 42 42" fill="none">
+          <path d="M6 32H36" stroke="#B8863B" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M9 27L16 19L22 24L33 11" stroke="#3E5643" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M27 11H33V17" stroke="#3E5643" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Investment Management</h3>
+        <p>Investment plans built around your goals and timeline — whether you're saving toward retirement, a milestone, or simply building wealth steadily and sensibly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="approach">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How I work</div>
+      <h2>Three steps, every time</h2>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item reveal">
+        <div class="num">01</div>
+        <h3>Listen</h3>
+        <p>We start with a real conversation about your life, your goals, and what keeps you up at night.</p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="num">02</div>
+        <h3>Plan</h3>
+        <p>I put together clear, honest recommendations — cover and investment options that actually fit, explained in plain language.</p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="num">03</div>
+        <h3>Protect &amp; Grow</h3>
+        <p>Once your plan is in place, I stay close — regular check-ins, quick responses, and support when it matters most.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-item"><span class="dot"></span>Broker at Hereford</div>
+    <div class="trust-item"><span class="dot"></span>Liberty Group affiliated products</div>
+    <div class="trust-item"><span class="dot"></span>FSCA-regulated · FAIS No. 2049</div>
+    <div class="trust-item"><span class="dot"></span>Johannesburg, South Africa</div>
+  </div>
+</div>
+
+<section id="contact" class="contact">
+  <div class="net-pattern"></div>
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's talk about your plan</h2>
+      <p>Whether it's risk cover, investments, or you're just not sure where to start — reach out and we'll take it from there.</p>
+      <div class="contact-methods">
+        <a class="contact-method" href="tel:+27622091010">
+          <span class="m-label">Call</span>
+          <span class="m-value">+27 62 209 1010</span>
+        </a>
+        <a class="contact-method" href="https://wa.me/27622091010" target="_blank" rel="noopener">
+          <span class="m-label">WhatsApp</span>
+          <span class="m-value">Message me directly</span>
+        </a>
+        <a class="contact-method" href="mailto:Joshuag@herefordgroup.co.za">
+          <span class="m-label">Email</span>
+          <span class="m-value">Joshuag@herefordgroup.co.za</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="fname">Joshua Galbraith · Hereford</p>
+    <p>Joshua Galbraith is a broker at Hereford, distributing Liberty Group products. Financial services in South Africa are regulated by the Financial Sector Conduct Authority (FSCA) under the FAIS Act. FAIS No. 2049.</p>
+    <p>© 2026 Joshua Galbraith. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
